@@ -1,8 +1,14 @@
+// Local variables
 @import "common/variables";
+// Import bootswatch variables
+@import "common/bootswatch-paper-variables";
 
 // Import npm dependencies
 @import "~font-awesome/scss/font-awesome";
 @import "~bootstrap/scss/bootstrap";
+
+// Import bootswatch styles
+@import "common/bootswatch-paper";
 
 // Import theme styles
 @import "common/global";
