@@ -3,15 +3,19 @@
 // Import bootswatch variables
 @import "common/bootswatch-paper-variables";
 
-// Import npm dependencies
+/** Import everything from autoload */
+@import "./autoload/**/*";
+
+/**
+ * Import npm dependencies
+ *
+ * Prefix your imports with `~` to grab from node_modules/
+ * @see https://github.com/webpack-contrib/sass-loader#imports
+ */
+// @import "~some-node-module";
+
 @import "~font-awesome/scss/font-awesome";
 @import "~bootstrap/scss/bootstrap";
-
-// Import bootswatch styles
-@import "common/bootswatch-paper";
-
-// Import theme mixins
-@import "common/mixins";
 
 // Import theme styles
 @import "common/global";
