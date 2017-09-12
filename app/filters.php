@@ -68,3 +68,19 @@ add_filter('comments_template', function ($comments_template) {
     );
     return template_path(locate_template(["views/{$comments_template}", $comments_template]) ?: $comments_template);
 });
+
+add_filter('sage/display_sidebar', function ($display) {
+  static $display;
+
+  isset($display) || $display = in_array(true, [
+    // The sidebar will be displayed if any of the following return true
+    is_front_page(),
+    is_single(),
+  ]);
+
+  return $display;
+});
+
+add_filter('sober/controller/path', function () {
+    return dirname(get_template_directory()) . '/app/controllers';
+});
