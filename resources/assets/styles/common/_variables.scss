@@ -2,6 +2,7 @@
 
 // Colors
 $brand-primary:         #283593;
+$brand-secondary:       #be1e2d;
 
 $fa-font-path:          '~font-awesome/fonts';
 
@@ -9,3 +10,6 @@ $fa-font-path:          '~font-awesome/fonts';
 $shadow-key-umbra-opacity: 0.2 !default;
 $shadow-key-penumbra-opacity: 0.14 !default;
 $shadow-ambient-shadow-opacity: 0.12 !default;
+
+// Transitions
+$transition-easing:     cubic-bezier(0.22, 0.61, 0.36, 1);
