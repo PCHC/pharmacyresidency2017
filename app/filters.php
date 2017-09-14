@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Resident;
+
 /**
  * Add <body> classes
  */
@@ -84,3 +86,12 @@ add_filter('sage/display_sidebar', function ($display) {
 add_filter('sober/controller/path', function () {
     return dirname(get_template_directory()) . '/app/controllers';
 });
+
+add_filter( 'the_title', function($title, $id = null) {
+  if( get_post_type($id) == 'resident' ) {
+    $title .= Resident::residentSuffix() ?
+      ', ' . Resident::residentSuffix() :
+      '';
+  }
+  return $title;
+}, 10, 2);
