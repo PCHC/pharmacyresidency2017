@@ -1,0 +1,63 @@
+aside.sidebar {
+  @include shadow-2dp();
+
+  border-radius: 0.25rem;
+  background: lighten(#000, 97.5%);
+  padding: 1rem;
+}
+
+.widget_resident-classes {
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  a {
+    display: inline-block;
+  }
+
+  .resident-class {
+    &--top {
+      > a {
+        font-size: 1.3rem;
+      }
+    }
+
+    &--sub {
+      margin: 0.5rem 0 0.5rem 1rem;
+
+      > a {
+        font-size: 1rem;
+        line-height: 1em;
+        box-shadow: none;
+        border-bottom: 0.2em solid rgba($brand-primary, 0.2);
+
+        &:hover {
+          border-bottom-color: rgba($brand-primary, 0.4);
+        }
+      }
+    }
+
+    &--resident {
+      margin: 0.25rem 0 0.25rem 1rem;
+
+      a {
+        font-size: 0.9rem;
+        box-shadow: none;
+
+        span {
+          display: inline-block;
+          transition: transform 0.2s $transition-easing;
+        }
+
+        &:hover {
+          span {
+            transform: translateX(0.5em);
+          }
+        }
+      }
+    }
+  }
+}

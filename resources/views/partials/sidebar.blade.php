@@ -10,7 +10,7 @@
     <ul>
     @foreach($_top_classes as $top_class)
       <li class="resident-class--top">
-        <h4><a href="{{get_term_link($top_class)}}">{{$top_class->name}}</a></h4>
+        <a href="{{get_term_link($top_class)}}">{{$top_class->name}}</a>
 
         @php(
           $_classes = get_terms(array(
@@ -22,7 +22,7 @@
           <ul>
             @foreach($_classes as $class)
               <li class="resident-class--sub">
-                <h5><a href="{{get_term_link($class)}}">{{$class->name}}</a></h5>
+                <a href="{{get_term_link($class)}}">{{$class->name}}</a>
 
                 @php(
                   $loop_args = array(
@@ -41,8 +41,10 @@
                 @if($loop->have_posts())
                   <ul>
                     @while( $loop->have_posts() ) @php($loop->the_post())
-                      <li>
-                        <a href="{{ get_the_permalink() }}">{{get_the_title()}}</a>
+                      <li class="resident-class--resident">
+                        <a href="{{ get_the_permalink() }}">
+                          <span>{{get_the_title()}}</span>
+                        </a>
                       </li>
                     @endwhile
                   </ul>
