@@ -43,13 +43,34 @@ trait ResidentPartial
   }
 
   public static function residentClass() {
-    $isCurrent = self::residentIsCurrent();
+    $resClass = self::residentClassLinks();
 
-    if( $isCurrent ) {
-      return 'Current Resident';
+    if( self::residentYearStart() ) {
+      $resClass .= ' | ' . self::residentYearStart() . '&ndash;';
+
+      if( !self::residentIsCurrent() ) {
+        $resClass .= self::residentYearEnd();
+      }
     }
 
-    return 'Residency Alumni, ' . self::residentYearStart() . ' &ndash; ' . self::residentYearStart();
+    return $resClass;
+  }
+
+  private static function residentClassLinks() {
+    $links = '';
+    $i = 1;
+    $terms = wp_get_post_terms(get_the_ID(), 'class');
+    foreach ($terms as $term) {
+      $links .= '<a href="' . get_term_link($term) . '">';
+      $links .= $term->name;
+      $links .= "</a>";
+
+      if( $i < count($terms) ) {
+        $links .= ' | ';
+      }
+      $i++;
+    }
+    return $links;
   }
 
   private static function residentIsCurrent() {

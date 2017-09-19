@@ -5,7 +5,9 @@
     @else
       <h2 class="entry-title">{{ get_the_title() }}</h2>
     @endif
-    <div class="meta resident-class">{!! Resident::residentClass() !!}</div>
+    <div class="meta resident-class">
+      {!! Resident::residentClass() !!}
+    <div>
   </header>
   <div class="entry-content">
     <div class="resident-bio">
