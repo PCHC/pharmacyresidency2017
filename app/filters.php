@@ -78,6 +78,7 @@ add_filter('sage/display_sidebar', function ($display) {
     // The sidebar will be displayed if any of the following return true
     is_front_page(),
     is_single(),
+    is_archive(),
   ]);
 
   return $display;
@@ -95,3 +96,39 @@ add_filter( 'the_title', function($title, $id = null) {
   }
   return $title;
 }, 10, 2);
+
+/**
+ *  Alter the post query on certain post types.
+ */
+add_action('pre_get_posts', function( $query ) {
+	// validate
+	if( is_admin() ){
+		return $query;
+	}
+	// project example
+	if( isset( $query->query_vars['post_type'] ) ) {
+    if( $query->query_vars['post_type'] == 'resident' ) {
+      // Order by last name.
+      add_filter( 'posts_orderby', __NAMESPACE__ . '\\order_by_lastname', 10, 2 );
+
+      // Order by title
+      //$query->set('orderby', 'title');
+      $query->set('order', 'ASC');
+    }
+	}
+	// always return
+	return $query;
+});
+
+function order_by_lastname( $orderby, $query ) {
+  // first you should check to make sure sure you're only filtering the particular query
+  // you want to hack. return $orderby if its not the correct query;
+  global $wpdb;
+  if( $query->query_vars['post_type'] == 'resident' ) {
+    // Trim in from right to first space
+  	$orderby_statement = "SUBSTR( LTRIM({$wpdb->posts}.post_title), LOCATE(' ',RTRIM({$wpdb->posts}.post_title)))";
+  	return $orderby_statement;
+	}
+  // return original $orderby if not the correct query.
+  return $orderby;
+}
