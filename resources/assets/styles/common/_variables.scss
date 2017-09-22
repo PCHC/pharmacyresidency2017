@@ -13,3 +13,9 @@ $shadow-ambient-shadow-opacity: 0.12 !default;
 
 // Transitions
 $transition-easing:     cubic-bezier(0.22, 0.61, 0.36, 1);
+
+// Breakpoints
+$breakpoint-sm:   576px;
+$breakpoint-md:   768px;
+$breakpoint-lg:   992px;
+$breakpoint-xl:   1200px;

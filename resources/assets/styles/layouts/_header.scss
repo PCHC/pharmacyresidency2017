@@ -13,6 +13,7 @@
 
 .banner {
   min-height: 80px;
+  padding: 10px 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -20,6 +21,11 @@
 
   .brand {
     text-decoration: none;
+    flex: 0 1 auto;
+
+    @media (min-width: $breakpoint-md) {
+      flex: 0 1 auto;
+    }
 
     img {
       height: 60px;
@@ -27,14 +33,24 @@
 
     span {
       display: inline-block;
-      font-size: 1.5rem;
       margin-left: 0.5em;
       padding-left: 0.5em;
       border-left: 1px solid #283593;
       line-height: 2em;
       transform: translate3d(0, 0.3em, 0);
-      font-weight: 100;
       color: $brand-primary;
+      font-size: 1.2rem;
+      font-weight: 300;
+
+      @media (min-width: $breakpoint-sm) {
+        font-size: 1.3rem;
+        font-weight: 200;
+      }
+
+      @media (min-width: $breakpoint-md) {
+        font-size: 1.5rem;
+        font-weight: 100;
+      }
     }
 
     &:hover {
@@ -42,24 +58,90 @@
         color: $brand-secondary;
       }
     }
+  } // end .brand
+
+  .search-form {
+    display: none;
+
+    @media (min-width: $breakpoint-md) {
+      display: block;
+    }
+
+    input {
+      border-radius: 0.25rem 0 0 0.25rem;
+      border-color: lighten(#000, 85%);
+      border-right: none;
+      z-index: 2;
+
+      &:hover {
+        z-index: 2;
+        border-color: lighten(#000, 65%);
+      }
+
+      &:focus {
+        z-index: 2;
+        border-right: none;
+        border-color: lighten($brand-primary, 25%);
+      }
+    }
+
+    button {
+      border-radius: 0 0.25rem 0.25rem 0;
+      border-color: lighten(#000, 85%);
+      background-color: lighten(#000, 85%);
+      border-left: none;
+
+      &:hover,
+      &:focus {
+        border-color: $brand-primary;
+        background: $brand-primary;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .nav-toggle {
+    display: block;
+    background: none;
+    border: none;
+
+    @media (min-width: $breakpoint-md) {
+      display: none;
+    }
   }
 
   .nav-primary {
+    flex: 0 1 100%;
+
+    &.collapse {
+      @media (min-width: $breakpoint-md) {
+        display: block;
+      }
+    }
+
     ul {
       display: flex;
-      flex-wrap: nowrap;
-      justify-content: space-around;
+      flex-wrap: wrap;
+      justify-content: center;
       position: relative;
       z-index: 100;
       margin: 0;
       padding: 0;
       list-style-type: none;
 
+      @media (min-width: $breakpoint-md) {
+        flex-wrap: nowrap;
+      }
+
       li {
-        flex: 0 1 auto;
+        flex: 0 1 100%;
         position: relative;
         margin: 0;
         padding: 0;
+
+        @media (min-width: $breakpoint-md) {
+          flex: 0 1 auto;
+        }
 
         a {
           line-height: 1em;
@@ -86,20 +168,25 @@
         }
 
         ul.sub-menu {
-          @include shadow-6dp();
+          display: block;
+          margin-left: 2rem;
 
-          display: none;
-          opacity: 0;
-          position: absolute;
-          top: 100%;
-          right: 0;
-          margin: 0 0.5rem;
-          padding: 0.25rem 0;
-          background: lighten(#000, 98%);
-          min-width: 100%;
-          max-width: 150%;
-          border-radius: 0.25rem;
-          transition: all 0.2s $transition-easing;
+          @media (min-width: $breakpoint-md) {
+            @include shadow-6dp();
+
+            display: none;
+            opacity: 0;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: lighten(#000, 98%);
+            min-width: 100%;
+            max-width: 150%;
+            border-radius: 0.25rem;
+            margin: 0 0.5rem;
+            padding: 0.25rem 0;
+            transition: all 0.2s $transition-easing;
+          }
 
           li {
             a {
@@ -143,5 +230,5 @@
         }
       }
     }
-  }
+  } // end .nav-primary
 }
