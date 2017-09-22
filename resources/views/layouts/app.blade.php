@@ -5,6 +5,7 @@
     <div class="grid-wrapper__main">
     @php(do_action('get_header'))
     @include('partials.header')
+    @include('partials.widgets-front-page')
     <main class="main" role="document">
       @yield('content')
     </main>

@@ -55,3 +55,13 @@
     0 24px 38px  3px rgba(0, 0, 0, $shadow-key-umbra-opacity),
     0 11px 15px -7px rgba(0, 0, 0, $shadow-ambient-shadow-opacity);
 }
+
+@mixin scrim($color: #000, $opacity: 0.6, $direction: bottom) {
+  background:
+    linear-gradient(
+      to $direction,
+      rgba($color, 0) 0%,
+      rgba($color, ($opacity/2)) 67%,
+      rgba($color, $opacity) 100%
+    );
+}

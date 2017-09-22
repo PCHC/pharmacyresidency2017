@@ -79,6 +79,10 @@ add_action('widgets_init', function () {
         'after_title'   => '</h3>'
     ];
     register_sidebar([
+        'name'          => __('Front Page', 'sage'),
+        'id'            => 'widgets-front-page'
+    ] + $config);
+    register_sidebar([
         'name'          => __('Primary', 'sage'),
         'id'            => 'sidebar-primary'
     ] + $config);

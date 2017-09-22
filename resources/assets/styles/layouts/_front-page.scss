@@ -1,0 +1,59 @@
+.widgets-front-page {
+  @include shadow-2dp();
+
+  overflow: hidden;
+
+  @supports (display: grid) {
+    grid-column: 1/-1;
+  }
+
+  .master-slider {
+    .ms-slide-info {
+      @include scrim(#000, 0.6, bottom);
+
+      bottom: 0 !important;
+
+      .ms-info {
+        padding: 3rem;
+        color: #fff;
+        font-size: 1.5rem;
+        font-weight: 200;
+        letter-spacing: 0.02em;
+        text-shadow:
+          1px 2px 1px rgba(#000, 0.95),
+          0 0 10px rgba(#000, 0.3);
+
+        h3 {
+          font-size: 2.5rem;
+        }
+
+        a:last-child {
+          display: inline-block;
+          line-height: 1;
+          font-size: 0.9em;
+          padding: 0.5em 1em;
+          margin: 0.5em 0 0;
+          text-shadow: none;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          font-weight: 100;
+          border: 1px solid #fff;
+          background: rgba(#000, 0.25);
+          border-radius: 2em;
+          color: #fff;
+          transition: all 0.2s $transition-easing;
+
+          &:hover,
+          &:focus {
+            @include focus-shadow();
+
+            text-decoration: none;
+            background: #fff;
+            color: $brand-primary;
+            transform: translateY(-0.25em);
+          }
+        }
+      }
+    }
+  }
+}
