@@ -14,9 +14,9 @@
         @include('partials.sidebar')
       </aside>
     @endif
+    </div>
     @php(do_action('get_footer'))
     @include('partials.footer')
-    </div>
     @php(wp_footer())
   </body>
 </html>
