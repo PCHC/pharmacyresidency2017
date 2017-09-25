@@ -1,0 +1,45 @@
+.page-header {
+  margin-bottom: 1rem;
+
+  &--featured-image {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+
+    &::before {
+      display: block;
+      content: "";
+      padding-top: 52.5%;
+    }
+
+    h1,
+    img {
+      position: absolute;
+      border-radius: 0.25rem;
+    }
+
+    h1 {
+      @include scrim();
+
+      z-index: 100;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      color: #fff;
+      padding: 2em 0.5em 0.5em;
+      margin: 0;
+      border-radius: 0.25rem;
+      text-shadow: 1px 1px 1px rgba(#000, 0.9);
+    }
+
+    img {
+      z-index: 1;
+      max-width: 100%;
+      height: auto;
+      top: 0;
+      left: 0;
+    }
+  }
+}
