@@ -74,7 +74,7 @@ add_filter('comments_template', function ($comments_template) {
 add_filter('sage/display_sidebar', function ($display) {
   static $display;
 
-  isset($display) || $display = in_array(true, [
+  isset($display) || $display = in_array(false, [
     // The sidebar will be displayed if any of the following return true
     is_front_page(),
     is_single(),
@@ -106,8 +106,14 @@ add_action('pre_get_posts', function( $query ) {
 		return $query;
 	}
 	// project example
-	if( isset( $query->query_vars['post_type'] ) ) {
-    if( $query->query_vars['post_type'] == 'resident' ) {
+	if( isset( $query->query_vars['post_type'] ) || isset( $query->query_vars['class'] ) ) {
+    if(
+      (
+        isset( $query->query_vars['post_type'] )
+        && $query->query_vars['post_type'] == 'resident'
+      ) 
+      || isset( $query->query_vars['class'] )
+    ) {
       // Order by last name.
       add_filter( 'posts_orderby', __NAMESPACE__ . '\\order_by_lastname', 10, 2 );
 
@@ -124,11 +130,9 @@ function order_by_lastname( $orderby, $query ) {
   // first you should check to make sure sure you're only filtering the particular query
   // you want to hack. return $orderby if its not the correct query;
   global $wpdb;
-  if( $query->query_vars['post_type'] == 'resident' ) {
-    // Trim in from right to first space
-  	$orderby_statement = "SUBSTR( LTRIM({$wpdb->posts}.post_title), LOCATE(' ',RTRIM({$wpdb->posts}.post_title)))";
-  	return $orderby_statement;
-	}
+  // Trim in from right to first space
+	$orderby_statement = "SUBSTR( LTRIM({$wpdb->posts}.post_title), LOCATE(' ',RTRIM({$wpdb->posts}.post_title)))";
+	return $orderby_statement;
   // return original $orderby if not the correct query.
   return $orderby;
 }
