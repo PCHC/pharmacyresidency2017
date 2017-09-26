@@ -28,7 +28,15 @@
     }
 
     img {
-      height: 60px;
+      height: 40px;
+
+      @media (max-width: $breakpoint-xs) {
+        height: 30px;
+      }
+
+      @media (min-width: $breakpoint-sm) {
+        height: 60px;
+      }
     }
 
     span {
@@ -39,8 +47,12 @@
       line-height: 2em;
       transform: translate3d(0, 0.3em, 0);
       color: $brand-primary;
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: 300;
+
+      @media (max-width: $breakpoint-xs) {
+        font-size: 0.9rem;
+      }
 
       @media (min-width: $breakpoint-sm) {
         font-size: 1.3rem;

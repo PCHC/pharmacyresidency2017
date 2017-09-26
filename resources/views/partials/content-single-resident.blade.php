@@ -11,10 +11,13 @@
   </header>
   <div class="entry-content">
     <div class="resident-bio">
+      {{ the_post_thumbnail('medium', [
+        'class' => 'img-fluid resident-img resident-img--no-grid'
+        ]) }}
       @php(the_content())
     </div>
     {{ the_post_thumbnail('medium', [
-      'class' => 'img-fluid'
+      'class' => 'img-fluid resident-img resident-img--grid'
       ]) }}
     <div class="resident-details">
       {!! Resident::residentHometown() !!}

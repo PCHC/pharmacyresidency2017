@@ -12,6 +12,31 @@ body {
   margin: 0 auto;
   max-width: 90vw;
 
+  > main {
+    @media (min-width: $breakpoint-md) {
+      float: left;
+      width: 70%;
+      margin-right: 5%;
+
+      @supports (display: grid) {
+        float: none;
+        width: auto;
+      }
+    }
+  }
+
+  > aside {
+    @media (min-width: $breakpoint-md) {
+      float: right;
+      width: 25%;
+
+      @supports (display: grid) {
+        float: none;
+        width: auto;
+      }
+    }
+  }
+
   @supports (display: grid) {
     display: grid;
     grid-row-gap: 10px;
@@ -30,6 +55,12 @@ body {
     aside {
       padding-left: 1rem;
     }
+  } // @supports display:grid
+
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
   }
 }
 
