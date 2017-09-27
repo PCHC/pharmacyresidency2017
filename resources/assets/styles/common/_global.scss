@@ -1,10 +1,58 @@
 body {
   font-size: calc(16px + 0.25vw);
   line-height: calc(1.2em + 0.5vw);
+  font-family: 'Roboto', $font-family-sans-serif;
 
   @media (min-width: $breakpoint-lg) {
     font-weight: 300;
   }
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-family: 'Roboto Slab', $font-family-sans-serif;
+  }
+}
+
+a {
+  main &,
+  aside & {
+    $link-color: #3f51b5;
+
+    color: $link-color;
+    text-decoration: none;
+    box-shadow: 0 -0.2em 0 rgba($link-color, 0.2) inset;
+    transition: all 0.1s $transition-easing;
+
+    &:hover,
+    &:focus {
+      color: $brand-primary;
+      text-decoration: none;
+      box-shadow: 0 -1.2em 0 rgba($link-color, 0.1) inset;
+    }
+  }
+}
+
+h1,
+h2 {
+  letter-spacing: 0.075em;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+h1,
+h3, {
+  color: lighten($brand-primary, 10%);
+}
+
+h2 {
+  color: darken($brand-secondary, 10%);
+}
+
+h4 {
+  color: darken(#8d7167, 10%);
 }
 
 main {
@@ -14,54 +62,10 @@ main {
   }
 }
 
-.grid-wrapper__main {
+.grid-wrapper {
   width: 100%;
   margin: 0 auto;
   max-width: 90vw;
-
-  > main {
-    @media (min-width: $breakpoint-md) {
-      float: left;
-      width: 70%;
-      margin-right: 5%;
-
-      @supports (display: grid) {
-        float: none;
-        width: auto;
-      }
-    }
-
-    .template-full & {
-      width: auto;
-      float: none;
-      margin-right: 0;
-
-      @supports (display: grid) {
-        grid-column: 1/-1;
-      }
-    }
-  }
-
-  > aside {
-    @media (min-width: $breakpoint-md) {
-      float: right;
-      width: 25%;
-
-      @supports (display: grid) {
-        float: none;
-        width: auto;
-      }
-    }
-
-    .template-full & {
-      width: auto;
-      float: none;
-
-      @supports (display: grid) {
-        grid-column: 1/-1;
-      }
-    }
-  }
 
   @supports (display: grid) {
     display: grid;
