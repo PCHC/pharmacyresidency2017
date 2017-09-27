@@ -87,47 +87,72 @@ main {
     }
   } // @supports display:grid
 
+  &--header {
+    max-width: 95vw;
+  }
+
+  &--footer {
+    display: block;
+    max-width: 100%;
+  }
+
+  &--main {
+    .template-full.fl-builder & {
+      width: auto;
+      max-width: none;
+    }
+
+    > main {
+      @media (min-width: $breakpoint-md) {
+        float: left;
+        width: 70%;
+        margin-right: 5%;
+
+        @supports (display: grid) {
+          float: none;
+          width: auto;
+        }
+      }
+
+      .template-full & {
+        width: auto;
+        float: none;
+        margin-right: 0;
+
+        @supports (display: grid) {
+          grid-column: 1/-1;
+        }
+      }
+    }
+
+    > aside {
+      @media (min-width: $breakpoint-md) {
+        float: right;
+        width: 25%;
+
+        @supports (display: grid) {
+          float: none;
+          width: auto;
+        }
+      }
+
+      .template-full & {
+        width: auto;
+        float: none;
+
+        @supports (display: grid) {
+          grid-column: 1/-1;
+        }
+      }
+    }
+  }
+
+  /**
+   * Clearfix
+   */
   &::after {
     content: "";
     display: table;
     clear: both;
   }
-}
-
-a {
-  main &,
-  aside & {
-    $link-color: #3f51b5;
-
-    color: $link-color;
-    text-decoration: none;
-    box-shadow: 0 -0.2em 0 rgba($link-color, 0.2) inset;
-    transition: all 0.1s $transition-easing;
-
-    &:hover,
-    &:focus {
-      color: $brand-primary;
-      text-decoration: none;
-      box-shadow: 0 -1.2em 0 rgba($link-color, 0.1) inset;
-    }
-  }
-}
-
-h1,
-h2 {
-  font-weight: 300;
-  letter-spacing: 0.075em;
-}
-
-h1,
-h3, {
-  color: lighten($brand-primary, 10%);
-}
-
-h2 {
-  color: darken($brand-secondary, 10%);
-}
-
-h4 {
-  color: darken(#8d7167, 10%);
 }
