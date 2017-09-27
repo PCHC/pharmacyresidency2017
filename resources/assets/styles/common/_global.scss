@@ -7,6 +7,13 @@ body {
   }
 }
 
+main {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
 .grid-wrapper__main {
   width: 100%;
   margin: 0 auto;
@@ -23,6 +30,16 @@ body {
         width: auto;
       }
     }
+
+    .template-full & {
+      width: auto;
+      float: none;
+      margin-right: 0;
+
+      @supports (display: grid) {
+        grid-column: 1/-1;
+      }
+    }
   }
 
   > aside {
@@ -33,6 +50,15 @@ body {
       @supports (display: grid) {
         float: none;
         width: auto;
+      }
+    }
+
+    .template-full & {
+      width: auto;
+      float: none;
+
+      @supports (display: grid) {
+        grid-column: 1/-1;
       }
     }
   }
