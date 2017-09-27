@@ -1,0 +1,35 @@
+.fl-photo-caption {
+  font-size: 1.1rem;
+  white-space: normal;
+  padding: 0.75rem 1rem;
+}
+
+.fl-row-bg-photo {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.fl-module {
+  &.button {
+    a {
+      display: inline-block;
+      font-size: 1.2em;
+      line-height: 1;
+      padding: 0.5em 1em;
+      border-radius: 0.25rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      border: 1px solid #fff;
+      box-shadow: none;
+      transition: all 0.2s $transition-easing;
+
+      &:hover {
+        @include shadow-8dp();
+
+        transform: translateY(-0.25em) scale(1.05);
+        background: #fff;
+        color: $brand-primary;
+      }
+    }
+  }
+}
