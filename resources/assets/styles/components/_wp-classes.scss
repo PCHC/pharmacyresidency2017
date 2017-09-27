@@ -21,18 +21,18 @@
 .alignright {
   margin-bottom: ($spacer / 2);
   height: auto;
+  max-width: 30%;
+  border-radius: 0.25rem;
 }
 
-@include media-breakpoint-up(sm) {
-  .alignleft {
-    float: left;
-    margin-right: ($spacer / 2);
-  }
+.alignleft {
+  float: left;
+  margin-right: ($spacer / 2);
+}
 
-  .alignright {
-    float: right;
-    margin-left: ($spacer / 2);
-  }
+.alignright {
+  float: right;
+  margin-left: ($spacer / 2);
 }
 
 /** Captions */
