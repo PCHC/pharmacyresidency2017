@@ -8,7 +8,7 @@
       "./scripts/customizer.js"
     ]
   },
-  "publicPath": "/app/themes/pharmacyresidency2017",
+  "publicPath": "/var/www/vhosts/pchc.com/httpdocs/wp-content/themes/pchc-pharmacyresidency2017",
   "devUrl": "http://pharmacyresidency.dev",
   "proxyUrl": "http://localhost:3000",
   "cacheBusting": "[name]_[hash:8]",
