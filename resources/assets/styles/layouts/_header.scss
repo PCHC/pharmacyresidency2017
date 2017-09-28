@@ -21,10 +21,14 @@
 
   .brand {
     text-decoration: none;
-    flex: 0 1 auto;
+    flex: 0 1 260px;
 
-    @media (min-width: $breakpoint-md) {
-      flex: 0 1 auto;
+    @media (min-width: $breakpoint-sm) {
+      flex: 0 1 350px;
+    }
+
+    @media (min-width: $breakpoint-sm) {
+      flex: 0 1 400px;
     }
 
     img {

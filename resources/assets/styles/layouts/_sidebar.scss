@@ -23,6 +23,13 @@ aside.sidebar {
       > a {
         font-size: 1.3rem;
       }
+
+      > ul {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        align-items: flex-start;
+      }
     }
 
     &--sub {
