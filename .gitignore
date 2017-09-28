@@ -8,4 +8,5 @@ npm-debug.log
 yarn-error.log
 vendor
 resources/assets/config-local.json
-!dist/*
+!dist/
+!dist/vendor/
