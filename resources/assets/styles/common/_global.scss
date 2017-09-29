@@ -144,6 +144,10 @@ main {
           grid-column: 1/-1;
         }
       }
+
+      .template-full.fl-builder & {
+        display: none;
+      }
     }
   }
 
